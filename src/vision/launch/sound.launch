@@ -1,0 +1,7 @@
+<launch>
+	<node pkg="sound_play" type="soundplay_node.py" name="soundplay_node.py"></node>
+	<node pkg="sound_play" type="say.py" name="say.py">
+		<param name="s" value="Hello World"/>
+</node>
+
+</launch>

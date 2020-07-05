@@ -1,0 +1,8 @@
+prefix=/home/kisron/catkin_workspace/install
+
+Name: opencv_tutorial
+Description: Description of opencv_tutorial
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

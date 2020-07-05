@@ -1,0 +1,12 @@
+stereoDispWindowSize
+13
+stereoDispTextureThreshold
+20
+stereoDispUniquenessRatio
+1
+stereoNumDisparities
+144
+threshold
+0
+blobArea
+0
