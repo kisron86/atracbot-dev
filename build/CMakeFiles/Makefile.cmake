@@ -544,4 +544,5 @@ set(CMAKE_DEPEND_INFO_FILES
   "vision/CMakeFiles/target_detection.dir/DependInfo.cmake"
   "vision/CMakeFiles/img_subscriber.dir/DependInfo.cmake"
   "vision/CMakeFiles/stereo_publisher.dir/DependInfo.cmake"
+  "vision/CMakeFiles/stereo_subscriber.dir/DependInfo.cmake"
   )

@@ -31,14 +31,8 @@ int main(int argc, char **argv){
 	IplImage *frame2 = grab->imageRight;
 	IplImage *immg1, *immg2;
 
-	
-
 	immg1 = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 1);
 	immg2 = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 1);
-
-    //IplImage * ipl = ...;
-    //cv::Mat m1 = cv::cvarrToMat(immg1);
-    //cv::Mat m2 = cv::cvarrToMat(immg2);
 
     image_transport::ImageTransport it(nh);
     image_transport::Publisher pubr = it.advertise("camera/right/image_raw",1);
@@ -57,8 +51,8 @@ int main(int argc, char **argv){
         cvCvtColor(grab->imageLeft, immg1, CV_RGB2GRAY);
 	    cvCvtColor(grab->imageRight, immg2, CV_RGB2GRAY);
         
-        msgr = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg1).toImageMsg();
-        msgl = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg2).toImageMsg();
+        msgl = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg1).toImageMsg();
+        msgr = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg2).toImageMsg();
 
         pubr.publish(msgr);
         publ.publish(msgl);

@@ -2,17 +2,23 @@
 #include <image_transport/image_transport.h>
 #include <cv_bridge/cv_bridge.h>
 #include <opencv2/highgui/highgui.hpp>
+#include <iostream>
+#include "my_roscpp_library/my_stereofunction.h"
+#include "my_roscpp_library/my_stereograb.h"
 
 using namespace cv;
+using namespace std;
+
+IplImage *frame1;    
+IplImage *frame2;
 
 Mat imgl(320,240,CV_8UC4);
 Mat imgr(320,240,CV_8UC4);
-    
 
 void r_imageCallback(const sensor_msgs::ImageConstPtr& msg){
     try {
-        //imshow("viewr", cv_bridge::toCvShare(msg, "bgr8")->image);
-        cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(imgr);
+        //cvShowImage("viewr", cv_bridge::toCvShare(msg, "mono8")->image);
+        cv_bridge::toCvShare(msg, "mono8")->image.copyTo(imgr);
         //imshow("viewr", imgr);
         //waitKey(30);
     } catch (cv_bridge::Exception& e) {
@@ -22,8 +28,8 @@ void r_imageCallback(const sensor_msgs::ImageConstPtr& msg){
 
 void l_imageCallback(const sensor_msgs::ImageConstPtr& msg){
     try {
-        //imshow("viewl", cv_bridge::toCvShare(msg, "bgr8")->image);
-        cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(imgl);
+        //cvShowImage("viewl", cv_bridge::toCvShare(msg, "mono8")->image);
+        cv_bridge::toCvShare(msg, "mono8")->image.copyTo(imgl);
         //imshow("viewl", imgl);
         //waitKey(30);
     } catch (cv_bridge::Exception& e) {
@@ -33,7 +39,7 @@ void l_imageCallback(const sensor_msgs::ImageConstPtr& msg){
 
 int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "img_subscriber");
+    ros::init(argc, argv, "stereo_subscriber");
     ros::NodeHandle nh;
 
     image_transport::ImageTransport it(nh);

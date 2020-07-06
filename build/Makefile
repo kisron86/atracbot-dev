@@ -2052,6 +2052,19 @@ stereo_publisher/fast:
 	$(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
 .PHONY : stereo_publisher/fast
 
+#=============================================================================
+# Target rules for targets named stereo_subscriber
+
+# Build rule for target.
+stereo_subscriber: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stereo_subscriber
+.PHONY : stereo_subscriber
+
+# fast build rule for target.
+stereo_subscriber/fast:
+	$(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/build
+.PHONY : stereo_subscriber/fast
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -2210,6 +2223,7 @@ help:
 	@echo "... target_detection"
 	@echo "... img_subscriber"
 	@echo "... stereo_publisher"
+	@echo "... stereo_subscriber"
 .PHONY : help
 
 

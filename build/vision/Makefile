@@ -90,28 +90,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-
-.PHONY : list_install_components/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -134,6 +112,28 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -242,6 +242,21 @@ stereo_publisher/fast:
 	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
 .PHONY : stereo_publisher/fast
 
+# Convenience name for target.
+vision/CMakeFiles/stereo_subscriber.dir/rule:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 vision/CMakeFiles/stereo_subscriber.dir/rule
+.PHONY : vision/CMakeFiles/stereo_subscriber.dir/rule
+
+# Convenience name for target.
+stereo_subscriber: vision/CMakeFiles/stereo_subscriber.dir/rule
+
+.PHONY : stereo_subscriber
+
+# fast build rule for target.
+stereo_subscriber/fast:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/build
+.PHONY : stereo_subscriber/fast
+
 src/img_subscriber.o: src/img_subscriber.cpp.o
 
 .PHONY : src/img_subscriber.o
@@ -323,6 +338,33 @@ src/stereo_publisher.cpp.s:
 	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/src/stereo_publisher.cpp.s
 .PHONY : src/stereo_publisher.cpp.s
 
+src/stereo_subscriber.o: src/stereo_subscriber.cpp.o
+
+.PHONY : src/stereo_subscriber.o
+
+# target to build an object file
+src/stereo_subscriber.cpp.o:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/src/stereo_subscriber.cpp.o
+.PHONY : src/stereo_subscriber.cpp.o
+
+src/stereo_subscriber.i: src/stereo_subscriber.cpp.i
+
+.PHONY : src/stereo_subscriber.i
+
+# target to preprocess a source file
+src/stereo_subscriber.cpp.i:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/src/stereo_subscriber.cpp.i
+.PHONY : src/stereo_subscriber.cpp.i
+
+src/stereo_subscriber.s: src/stereo_subscriber.cpp.s
+
+.PHONY : src/stereo_subscriber.s
+
+# target to generate assembly for a file
+src/stereo_subscriber.cpp.s:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/src/stereo_subscriber.cpp.s
+.PHONY : src/stereo_subscriber.cpp.s
+
 src/target_detection.o: src/target_detection.cpp.o
 
 .PHONY : src/target_detection.o
@@ -386,15 +428,16 @@ help:
 	@echo "... install/strip"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
+	@echo "... install/local"
+	@echo "... test"
 	@echo "... trash_detection"
 	@echo "... install"
 	@echo "... minoru_camera"
 	@echo "... list_install_components"
 	@echo "... target_detection"
 	@echo "... img_subscriber"
-	@echo "... install/local"
-	@echo "... test"
 	@echo "... stereo_publisher"
+	@echo "... stereo_subscriber"
 	@echo "... src/img_subscriber.o"
 	@echo "... src/img_subscriber.i"
 	@echo "... src/img_subscriber.s"
@@ -404,6 +447,9 @@ help:
 	@echo "... src/stereo_publisher.o"
 	@echo "... src/stereo_publisher.i"
 	@echo "... src/stereo_publisher.s"
+	@echo "... src/stereo_subscriber.o"
+	@echo "... src/stereo_subscriber.i"
+	@echo "... src/stereo_subscriber.s"
 	@echo "... src/target_detection.o"
 	@echo "... src/target_detection.i"
 	@echo "... src/target_detection.s"
