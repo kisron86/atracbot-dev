@@ -107,7 +107,7 @@ char fpsr_string[10];
 char fpsl_string[10];
 
 int main(int argc, char **argv){
-    ros::init(argc, argv, "img_stream_publisher");
+    ros::init(argc, argv, "minoru_camera");
     ros::NodeHandle nh;    
 
     VideoCapture capr(4);  // kamera kanan

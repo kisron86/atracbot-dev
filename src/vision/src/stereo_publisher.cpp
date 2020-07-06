@@ -21,28 +21,24 @@ StereoFunction* stereoFunc = new StereoFunction();
 int main(int argc, char **argv){
     ros::init(argc, argv, "img_stream_publisher");
     ros::NodeHandle nh;   
+    CvSize imageSize = { 0, 0 };
 
     grab->stereoGrabInitFrames();
 	grab->stereGrabFrames();
 	stereoFunc->stereoInit(grab); 
 
-    //CvSize imageSize = { 0, 0 };
-
 	IplImage *frame1 = grab->imageLeft;
 	IplImage *frame2 = grab->imageRight;
 	IplImage *immg1, *immg2;
 
+	
+
 	immg1 = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 1);
 	immg2 = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 1);
 
-	grab->stereGrabFrames();
-	//frame1 = grab->imageLeft;
-	//frame2 = grab->imageRight;
-
-	cvCvtColor(grab->imageLeft, immg1, CV_RGB2GRAY);
-	cvCvtColor(grab->imageRight, immg2, CV_RGB2GRAY);
-			
-	//if(cvWaitKey(15)==27) break;
+    //IplImage * ipl = ...;
+    //cv::Mat m1 = cv::cvarrToMat(immg1);
+    //cv::Mat m2 = cv::cvarrToMat(immg2);
 
     image_transport::ImageTransport it(nh);
     image_transport::Publisher pubr = it.advertise("camera/right/image_raw",1);
@@ -55,9 +51,14 @@ int main(int argc, char **argv){
 
     while (ros::ok()) {
         grab->stereGrabFrames();
-        unsigned int n;
-        msgr = cv_bridge::CvImage(std_msgs::Header(),"bgr8", immg1).toImageMsg();
-        msgl = cv_bridge::CvImage(std_msgs::Header(),"bgr8", immg2).toImageMsg();
+        
+	    frame1 = grab->imageLeft;
+	    frame2 = grab->imageRight;
+        cvCvtColor(grab->imageLeft, immg1, CV_RGB2GRAY);
+	    cvCvtColor(grab->imageRight, immg2, CV_RGB2GRAY);
+        
+        msgr = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg1).toImageMsg();
+        msgl = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg2).toImageMsg();
 
         pubr.publish(msgr);
         publ.publish(msgl);
@@ -65,20 +66,22 @@ int main(int argc, char **argv){
         ros::spinOnce();
         loop_rate.sleep();
 
+        //imshow("left", m2);
+        //imshow("right", m1);
         cvShowImage("camera left", immg1);
 		cvShowImage("camera right", immg2);
         
         //ros::spinOnce();
-        n++;
-        cout<< "macet" << n << endl;
-        cvReleaseImage(&immg1);
-        cvReleaseImage(&immg2);
-        if(waitKey(30) == 27){
+        //n++;
+        //cout<< "macet" << n << endl;
+        //cvReleaseImage(&immg1);
+        //cvReleaseImage(&immg2);
+        if(waitKey(15) == 27){
             break;
         }
     }
-    destroyAllWindows();
-    grab->stereoGrabStopCam();
+    //destroyAllWindows();
+    //grab->stereoGrabStopCam();
     return 0;
 }
 
