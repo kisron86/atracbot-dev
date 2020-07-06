@@ -1,0 +1,10 @@
+<!-- 
+This launch file runs the sound_play node and a test script that excersises
+most of its functionality.
+-->
+
+<launch>
+  <node pkg="vision" type="stereo_publisher" name="stereo_publisher"></node>
+  <node pkg="vision" type="stereo_subscriber" name="stereo_subscriber" output="screen"></node>  
+
+</launch>
