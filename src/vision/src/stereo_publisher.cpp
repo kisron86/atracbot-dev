@@ -62,8 +62,8 @@ int main(int argc, char **argv){
 
         //imshow("left", m2);
         //imshow("right", m1);
-        //cvShowImage("camera left", immg1);
-		//cvShowImage("camera right", immg2);
+        cvShowImage("camera left", immg1);
+		cvShowImage("camera right", immg2);
         
         //ros::spinOnce();
         //n++;

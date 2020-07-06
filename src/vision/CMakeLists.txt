@@ -89,3 +89,11 @@ target_link_libraries(stereo_publisher ${catkin_LIBRARIES} ${OpenCV_LIBS})
 add_executable(stereo_subscriber src/stereo_subscriber.cpp)
 add_dependencies(stereo_subscriber ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(stereo_subscriber ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
+#add_executable(deteksi_sampah src/deteksi_sampah.cpp)
+#add_dependencies(deteksi_sampah ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(deteksi_sampah ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
+#add_executable(deteksi_target src/deteksi_target.cpp)
+#add_dependencies(deteksi_target ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+#target_link_libraries(deteksi_target ${catkin_LIBRARIES} ${OpenCV_LIBS})

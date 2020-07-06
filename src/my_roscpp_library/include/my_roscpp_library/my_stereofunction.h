@@ -72,7 +72,6 @@ struct StereoFunction{
 
   double reprojectionVars[6];
 
-
   int stereoPreFilterSize,
     stereoPreFilterCap,
     stereoDispWindowSize,

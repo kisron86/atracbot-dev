@@ -167,38 +167,36 @@ void StereoFunction::stereoInit(StereoGrab* grabb)
 
 	//READ In FOCAL LENGTH, SENSOR ELEMENT SIZE, XFOV, YFOV
 	//0: fx(pixel), 1: fy(pixel), 2: B (baseline), 3: f(mm), 4: sensor element size, 5: baseline in mm
-		/*reprojectionVars[0] = cvmGet(_M1,0,0);
-		reprojectionVars[1] = cvmGet(_M1,0,0);
-		reprojectionVars[2] = (-1)*cvmGet(_T,0,0);
-		reprojectionVars[3] = cvmGet(_CamData, 0, 0);
-		reprojectionVars[4] = cvmGet(_CamData, 0, 1);
-		reprojectionVars[5] = cvmGet(_CamData, 0, 2);*/
+	/*reprojectionVars[0] = cvmGet(_M1,0,0);
+	reprojectionVars[1] = cvmGet(_M1,0,0);
+	reprojectionVars[2] = (-1)*cvmGet(_T,0,0);
+	reprojectionVars[3] = cvmGet(_CamData, 0, 0);
+	reprojectionVars[4] = cvmGet(_CamData, 0, 1);
+	reprojectionVars[5] = cvmGet(_CamData, 0, 2);*/
 
-
-		//Loading images
-		img1 = cvCreateImage(cvSize(320,240), IPL_DEPTH_8U, 1);		
-		img2 = cvCreateImage(cvSize(320,240), IPL_DEPTH_8U, 1);
-		imageSize = cvSize(img1 -> width,img1 ->height);
+	//Loading images
+	img1 = cvCreateImage(cvSize(320,240), IPL_DEPTH_8U, 1);		
+	img2 = cvCreateImage(cvSize(320,240), IPL_DEPTH_8U, 1);
+	imageSize = cvSize(img1 -> width,img1 ->height);
 		
-		img1r = cvCreateMat( imageSize.height,imageSize.width, CV_8U );		//rectified left image
-		img2r = cvCreateMat( imageSize.height,imageSize.width, CV_8U );		//rectified right image
-		disp  = cvCreateMat( imageSize.height,imageSize.width, CV_16S );	//disparity map
-		vdisp = cvCreateMat( imageSize.height,imageSize.width, CV_8U );
-		depthM = cvCreateMat(imageSize.height, imageSize.width, CV_32F);
-				
+	img1r = cvCreateMat( imageSize.height,imageSize.width, CV_8U );		//rectified left image
+	img2r = cvCreateMat( imageSize.height,imageSize.width, CV_8U );		//rectified right image
+	disp  = cvCreateMat( imageSize.height,imageSize.width, CV_16S );	//disparity map
+	vdisp = cvCreateMat( imageSize.height,imageSize.width, CV_8U );
+	depthM = cvCreateMat(imageSize.height, imageSize.width, CV_32F);		
 		
-		thres_img = cvCreateImage( imageSize, img1->depth, 1);
-		blobs_img = cvCreateImage( imageSize, img1->depth, 3);
+	thres_img = cvCreateImage( imageSize, img1->depth, 1);
+	blobs_img = cvCreateImage( imageSize, img1->depth, 3);
+	
+	img_detect = cvCreateImage(imageSize, IPL_DEPTH_8U, 3);
+	r_detect = cvCreateImage(imageSize,8,1);//subpixel
+	r_detect_r = cvCreateImage(imageSize,8,1);
+	g_detect = cvCreateImage(imageSize,8,1);//subpixel
+	g_detect_r = cvCreateImage(imageSize,8,1);
+	b_detect = cvCreateImage(imageSize,8,1);//subpixel
+	b_detect_r = cvCreateImage(imageSize,8,1);
 		
-		img_detect = cvCreateImage(imageSize, IPL_DEPTH_8U, 3);
-		r_detect = cvCreateImage(imageSize,8,1);//subpixel
-		r_detect_r = cvCreateImage(imageSize,8,1);
-		g_detect = cvCreateImage(imageSize,8,1);//subpixel
-		g_detect_r = cvCreateImage(imageSize,8,1);
-		b_detect = cvCreateImage(imageSize,8,1);//subpixel
-		b_detect_r = cvCreateImage(imageSize,8,1);
-		
-		pair = cvCreateMat( imageSize.height, imageSize.width*2,CV_8UC3 ); 
+	pair = cvCreateMat( imageSize.height, imageSize.width*2,CV_8UC3 ); 
 }
 
 void StereoFunction::stereoCalibration(StereoGrab* grabb){
@@ -390,7 +388,6 @@ void StereoFunction::stereoCorrelation(StereoGrab* grabb){
 	cvRemap( b_detect, b_detect_r, mx1, my1 ); // Undistort image
 	cvMerge( r_detect_r, g_detect_r, b_detect_r, NULL, img_detect);
 
-
 	IplImage* eq_gray = cvCreateImage(cvGetSize(img1), 8, 1);
 
 	CvHistogram *hist;
@@ -444,23 +441,33 @@ void StereoFunction::stereoCorrelation_deteksi(StereoGrab* grabb){
 	if (flag == 0){
 		//Muat parameter fungsi diskriminan terlatih (berbeda dari classifier yang disimpan oleh svm-> save)
 		
-		
-
 		ifstream fileIn(string(FILEPATH) + "HOG_SVM0.txt", ios::in);
-		vector<double> detector;
 		cout << "file ok" << endl;
-		double val;
-		while (!fileIn.eof())
+		vector<float> detector;
+		float val;
+		int n = 0, i = 0;
+		string line;
+		// while (!fileIn.eof())
+		// {
+		// 	fileIn >> val;
+		// 	detector.push_back(val);
+		// }
+		// fileIn.close();
+
+		while (getline(fileIn, line))
 		{
-			fileIn >> val;
+			val = stof(line);
 			detector.push_back(val);
+			n++;
 		}
 		fileIn.close();
+		cout << "jumlah n " << n << endl; 
+		cout <<"size vector " << detector.size() << endl;
 
 		//Pengaturan HOG		
 		hog.winSize = Size(64, 64);
 		cout << "Deklarasi Mulai" << endl; //error disini, boleh saya lihat program ketika di run ?
-		cout << hog.winSize << endl;
+		cout << hog.getDescriptorSize() << endl;
 		
 		hog.setSVMDetector(detector);// Gunakan penggolong train sendiri
 		cout << "Deklarasi Lewat" << endl;

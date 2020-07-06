@@ -1216,8 +1216,8 @@ int main(int argc, char **argv)
 	//  -- 1. Load the cascades
 	if (!waste_cascade.load(waste_cascade_name)) { printf("--(!)Error loading xml\n"); };
 	
-	char choice='z';
-	while(choice!='q'){
+	//char choice='z';
+	while(ros::ok()){
 		
 
 		// fps counter begin
