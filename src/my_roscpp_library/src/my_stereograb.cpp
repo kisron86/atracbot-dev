@@ -4,10 +4,10 @@ CvCapture *capture1=NULL, *capture2=NULL;
 
 void StereoGrab::stereoGrabInitFrames(){
 
-  capture1=cvCaptureFromCAM(2);
+  capture1=cvCaptureFromCAM(4);
   assert(capture1!=NULL);
   cvWaitKey(100);
-  capture2=cvCaptureFromCAM(0);
+  capture2=cvCaptureFromCAM(2);
   assert(capture2!=NULL);
 
   cvSetCaptureProperty(capture1,CV_CAP_PROP_FRAME_WIDTH,WIDTH);
