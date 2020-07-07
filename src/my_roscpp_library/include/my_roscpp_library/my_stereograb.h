@@ -22,8 +22,11 @@ struct StereoGrab{
   void stereoGrabInitFrames();
   void stereGrabFrames();
   void stereoGrabStopCam();
+  void stereoGrabGetSubscribeFrame();
   IplImage* imageLeft;
   IplImage* imageRight;
+  IplImage* imageLeftSubs;
+  IplImage* imageRightSubs;
 
 };
 
