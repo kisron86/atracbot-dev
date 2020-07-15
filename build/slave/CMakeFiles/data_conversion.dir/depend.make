@@ -58,8 +58,8 @@ slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
-slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/rosserial_arduino/Adc.h
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/sensor_msgs/Range.h
+slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/std_msgs/Float64.h
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/std_msgs/String.h
 slave/CMakeFiles/data_conversion.dir/src/data_conversion.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h

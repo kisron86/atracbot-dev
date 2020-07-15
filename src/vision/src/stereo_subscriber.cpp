@@ -12,13 +12,22 @@ using namespace std;
 IplImage *frame1;    
 IplImage *frame2;
 
-Mat imgl(320,240,CV_8UC4);
-Mat imgr(320,240,CV_8UC4);
+Mat imgl(320,240,CV_8UC1);
+Mat imgr(320,240,CV_8UC1);
+
+cv::Mat img2;
+IplImage imgTmp = img2;
+IplImage *input = cvCloneImage(&imgTmp);
+IplImage tes_l, tes_r;
+Mat showL(320,240,CV_8UC1);
+Mat showR(320,240,CV_8UC1);
 
 void r_imageCallback(const sensor_msgs::ImageConstPtr& msg){
     try {
         //cvShowImage("viewr", cv_bridge::toCvShare(msg, "mono8")->image);
-        cv_bridge::toCvShare(msg, "mono8")->image.copyTo(imgr);
+        cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(imgr);
+        //tes_r = imgr;
+        // cv_bridge::toCvShare(msg, "mono8")->image.
         //imshow("viewr", imgr);
         //waitKey(30);
     } catch (cv_bridge::Exception& e) {
@@ -29,7 +38,8 @@ void r_imageCallback(const sensor_msgs::ImageConstPtr& msg){
 void l_imageCallback(const sensor_msgs::ImageConstPtr& msg){
     try {
         //cvShowImage("viewl", cv_bridge::toCvShare(msg, "mono8")->image);
-        cv_bridge::toCvShare(msg, "mono8")->image.copyTo(imgl);
+        cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(imgl);
+        tes_l = imgl;
         //imshow("viewl", imgl);
         //waitKey(30);
     } catch (cv_bridge::Exception& e) {
@@ -47,8 +57,16 @@ int main(int argc, char **argv)
     image_transport::Subscriber subl = it.subscribe("camera/left/image_raw", 1, l_imageCallback);
         
     while(ros::ok()){
-        imshow("kanan", imgr);
-        imshow("kiri", imgl);
+        //showL = Mat(&tes_l, true);
+        //showR = Mat(&tes_r, true);
+        //cout << showL.size().width << showL.size().height << endl;
+        //cout << showR.empty() << endl;
+        IplImage ipl_img_r = imgr.operator IplImage();
+        IplImage ipl_img_l = imgr.operator IplImage();
+        cvShowImage("camera right", &ipl_img_r);
+        cvShowImage("camera left", &ipl_img_l);
+        //imshow("kanan", imgr);
+        //imshow("kiri", imgl);
         waitKey(10);
         ros::spinOnce();
 

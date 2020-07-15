@@ -6,6 +6,16 @@ vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /home/kisron/ca
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /home/kisron/catkin_workspace/src/my_roscpp_library/include/my_roscpp_library/my_stereofunction.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /home/kisron/catkin_workspace/src/my_roscpp_library/include/my_roscpp_library/my_stereograb.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /home/kisron/catkin_workspace/src/vision/src/trash_detection.cpp
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/cv_bridge/cv_bridge.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/camera_publisher.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/camera_subscriber.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/exception.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/image_transport.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/loader_fwds.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/publisher.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/single_subscriber_publisher.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/subscriber.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/image_transport/transport_hints.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/assert.h
@@ -24,6 +34,7 @@ vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodi
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/message.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/message_event.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/message_forward.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/message_operations.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/message_traits.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/names.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/node_handle.h
@@ -61,6 +72,12 @@ vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodi
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/CameraInfo.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/CompressedImage.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/Image.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/RegionOfInterest.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/image_encodings.h
+vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 

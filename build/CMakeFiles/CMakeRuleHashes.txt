@@ -6,6 +6,8 @@ fc14b1b237036cd52e1114afe6e84f6f /home/kisron/catkin_workspace/devel/include/ros
 944c29a368960c0e8c93f54a203d5a92 /home/kisron/catkin_workspace/devel/include/rosserial_msgs/Log.h
 524b2ef0cb8fb700ad38a73d12e51deb /home/kisron/catkin_workspace/devel/include/rosserial_msgs/RequestParam.h
 e17cc7ac6974624d95b621b9338564d6 /home/kisron/catkin_workspace/devel/include/rosserial_msgs/TopicInfo.h
+9132fe5452f8daec65a40969651330d3 /home/kisron/catkin_workspace/devel/include/telegram_ros/LabeledImage.h
+4470a1c4fb983822970c0998e37c351e /home/kisron/catkin_workspace/devel/include/telegram_ros/Options.h
 93fe085fa9ced28c77cb277aa0994432 /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/rosserial_arduino/msg/_Adc.py
 8792dc81be8149c3239d0a4d9dd608ea /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/rosserial_arduino/msg/__init__.py
 156b60d8c6dd6ad030f99646b64941dc /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/rosserial_arduino/srv/_Test.py
@@ -19,6 +21,9 @@ c096cfa9307d1ab74bba84da85766258 /home/kisron/catkin_workspace/devel/lib/python2
 bc40d8543699d156314228d1492767e8 /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/rosserial_msgs/msg/__init__.py
 fa520dad0257ad1e6d485f58e6fd5db2 /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/_RequestParam.py
 a79be2c10a383387808d431e026d7ea3 /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/rosserial_msgs/srv/__init__.py
+9d4c1746c284890dc853dbd3c1427913 /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/telegram_ros/msg/_LabeledImage.py
+92fc6e733c59ee6ea8f221a70298d2ee /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/telegram_ros/msg/_Options.py
+648e97108765a4dca95a75015a9ec649 /home/kisron/catkin_workspace/devel/lib/python2.7/dist-packages/telegram_ros/msg/__init__.py
 ebe2ff832d141c2a67276720ccec21c1 /home/kisron/catkin_workspace/devel/share/common-lisp/ros/rosserial_arduino/msg/Adc.lisp
 d58ee164adfbeee9ca5389f3bbceda91 /home/kisron/catkin_workspace/devel/share/common-lisp/ros/rosserial_arduino/srv/Test.lisp
 c98faea8069421aaf7d6e50421730d7d /home/kisron/catkin_workspace/devel/share/common-lisp/ros/rosserial_mbed/msg/Adc.lisp
@@ -26,6 +31,8 @@ c98faea8069421aaf7d6e50421730d7d /home/kisron/catkin_workspace/devel/share/commo
 c0a2f9e8db282d2d756933c61d8c1a57 /home/kisron/catkin_workspace/devel/share/common-lisp/ros/rosserial_msgs/msg/Log.lisp
 08f511d06f09c43eb6c787b9c90936b8 /home/kisron/catkin_workspace/devel/share/common-lisp/ros/rosserial_msgs/msg/TopicInfo.lisp
 d9ddcd8ec5641a6979f98f4d47030ab9 /home/kisron/catkin_workspace/devel/share/common-lisp/ros/rosserial_msgs/srv/RequestParam.lisp
+68989fd6185744866c0cdad510655afc /home/kisron/catkin_workspace/devel/share/common-lisp/ros/telegram_ros/msg/LabeledImage.lisp
+f4d6e8e586e2a2305eb73c0bd791a13c /home/kisron/catkin_workspace/devel/share/common-lisp/ros/telegram_ros/msg/Options.lisp
 7f31778c18f865c8f554aae4f431c9c8 /home/kisron/catkin_workspace/devel/share/gennodejs/ros/rosserial_arduino/msg/Adc.js
 f4e6ba234c2742fbbf5ead9c95db17db /home/kisron/catkin_workspace/devel/share/gennodejs/ros/rosserial_arduino/srv/Test.js
 f51257ec911de1427819607f96d2381a /home/kisron/catkin_workspace/devel/share/gennodejs/ros/rosserial_mbed/msg/Adc.js
@@ -33,6 +40,8 @@ f51257ec911de1427819607f96d2381a /home/kisron/catkin_workspace/devel/share/genno
 65b7eb45e844b7861dd55118e0575ad0 /home/kisron/catkin_workspace/devel/share/gennodejs/ros/rosserial_msgs/msg/Log.js
 8ec486b6cde7bca4fd8a0bfe898d26bd /home/kisron/catkin_workspace/devel/share/gennodejs/ros/rosserial_msgs/msg/TopicInfo.js
 d8dad1a94c314c6fa63d9642e216d8ec /home/kisron/catkin_workspace/devel/share/gennodejs/ros/rosserial_msgs/srv/RequestParam.js
+90a50e123205cffaab0a3e8b59e68f7a /home/kisron/catkin_workspace/devel/share/gennodejs/ros/telegram_ros/msg/LabeledImage.js
+c46914f8b2e6e88b14f49e2f0e9206b5 /home/kisron/catkin_workspace/devel/share/gennodejs/ros/telegram_ros/msg/Options.js
 f697c02e19748739b2b8c117065142d4 /home/kisron/catkin_workspace/devel/share/roseus/ros/rosserial_arduino/manifest.l
 b481f46e518ceeedebe7c6ca354d3358 /home/kisron/catkin_workspace/devel/share/roseus/ros/rosserial_arduino/msg/Adc.l
 bac2e2f3d7e205311acce7817bf24f87 /home/kisron/catkin_workspace/devel/share/roseus/ros/rosserial_arduino/srv/Test.l
@@ -43,6 +52,9 @@ c04ada6e5ab6a842aea3449934cb9f74 /home/kisron/catkin_workspace/devel/share/roseu
 5147a6ab9e8d239d4946ea46dd930016 /home/kisron/catkin_workspace/devel/share/roseus/ros/rosserial_msgs/msg/Log.l
 614c144b812580b7eb787eba2dff7344 /home/kisron/catkin_workspace/devel/share/roseus/ros/rosserial_msgs/msg/TopicInfo.l
 5df3ead2f92b6e68cbd5b6f03a07f19c /home/kisron/catkin_workspace/devel/share/roseus/ros/rosserial_msgs/srv/RequestParam.l
+7f5e810d6ecc3a083a74d2e54e88f0e8 /home/kisron/catkin_workspace/devel/share/roseus/ros/telegram_ros/manifest.l
+fe2d6d0f726b793fee18e1136eae9365 /home/kisron/catkin_workspace/devel/share/roseus/ros/telegram_ros/msg/LabeledImage.l
+4f36e39f4ff890c452a7a4b81becc8ab /home/kisron/catkin_workspace/devel/share/roseus/ros/telegram_ros/msg/Options.l
 d70d672084da4a4ab68b11f0ff7444dd CMakeFiles/clean_test_results
 91b26998591ac100e2bf2d75f82cf9d8 rosserial/rosserial_arduino/CMakeFiles/_rosserial_arduino_generate_messages_check_deps_Adc
 9b387d3d5a27623e1491265c5bf13c2e rosserial/rosserial_arduino/CMakeFiles/_rosserial_arduino_generate_messages_check_deps_Test
@@ -85,3 +97,10 @@ fd57dc6d49a7583b5f476a7b90a20392 serial/tests/CMakeFiles/_run_tests_serial_gtest
 ddd18137be4b48aaff27dfb670191044 serial/tests/CMakeFiles/clean_test_results_serial
 930626952b61413ce7d93eec1863eac5 serial/tests/CMakeFiles/run_tests_serial_gtest_serial-test
 fd57dc6d49a7583b5f476a7b90a20392 serial/tests/CMakeFiles/run_tests_serial_gtest_serial-test-timer
+7019d97476c9a7a8a1f9346d852c4871 telegram_ros/CMakeFiles/_telegram_ros_generate_messages_check_deps_LabeledImage
+7433d1356dc3a3c701e18bbfa3b2fa55 telegram_ros/CMakeFiles/_telegram_ros_generate_messages_check_deps_Options
+dd1d23db0df5c218dedda9a06e2a7e87 telegram_ros/CMakeFiles/telegram_ros_generate_messages_cpp
+dd1d23db0df5c218dedda9a06e2a7e87 telegram_ros/CMakeFiles/telegram_ros_generate_messages_eus
+dd1d23db0df5c218dedda9a06e2a7e87 telegram_ros/CMakeFiles/telegram_ros_generate_messages_lisp
+dd1d23db0df5c218dedda9a06e2a7e87 telegram_ros/CMakeFiles/telegram_ros_generate_messages_nodejs
+dd1d23db0df5c218dedda9a06e2a7e87 telegram_ros/CMakeFiles/telegram_ros_generate_messages_py

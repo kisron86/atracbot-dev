@@ -27,6 +27,10 @@ opencv2/core/mat.hpp
 -
 opencv2/calib3d/calib3d.hpp
 -
+cv_bridge/cv_bridge.h
+-
+image_transport/image_transport.h
+-
 iostream
 -
 fstream
@@ -44,6 +48,8 @@ vector
 
 /home/kisron/catkin_workspace/src/my_roscpp_library/include/my_roscpp_library/my_stereograb.h
 iostream
+-
+stdio.h
 -
 opencv2/opencv.hpp
 -

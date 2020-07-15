@@ -19,6 +19,8 @@ sensor_msgs/Range.h
 /home/kisron/catkin_workspace/src/slave/src/sensor_msgs/Range.h
 rosserial_arduino/Adc.h
 /home/kisron/catkin_workspace/src/slave/src/rosserial_arduino/Adc.h
+iostream
+-
 
 /opt/ros/melodic/include/ros/advertise_options.h
 ros/forwards.h

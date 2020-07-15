@@ -5,6 +5,7 @@
 // untuk variable dan fungsi
 #pragma once
 #include <iostream>
+#include <stdio.h>
 #include <opencv2/opencv.hpp>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/core/core.hpp>
@@ -16,6 +17,8 @@
 #define WIDTH 320
 #define HEIGHT 240
 
+using namespace std;
+
 
 struct StereoGrab{
 
@@ -24,6 +27,8 @@ struct StereoGrab{
   void stereoGrabStopCam();
   IplImage* imageLeft;
   IplImage* imageRight;
+  IplImage imageL;
+  IplImage imageR;
 
 };
 

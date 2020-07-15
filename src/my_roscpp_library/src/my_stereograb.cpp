@@ -19,7 +19,10 @@ void StereoGrab::stereoGrabInitFrames(){
 void StereoGrab::stereGrabFrames(){
 	imageLeft = cvQueryFrame(capture1);
 	imageRight = cvQueryFrame(capture2);
+	// mat_imageLeft = cvQueryFrame(capture1);
+	// mat_imageRight = cvQueryFrame(capture2);
   cvSaveImage("/home/kisron/catkin_workspace/cam_left.jpg", imageLeft);
+  // cout << imageLeft->height << " size " << imageRight->width << endl;
 }
 
 void StereoGrab::stereoGrabStopCam(){
