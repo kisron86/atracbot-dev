@@ -1269,17 +1269,21 @@ int main(int argc, char **argv)
 			if (run == 10000) run = 0;
 			ClassImg = frame_cpy.clone();
 
+			cout << track_roi_top.x << " " << track_roi_top.y << " " << track_roi_bot.x << " " << track_roi_bot.y << endl;
 			if (track_roi_top.x <= 0 || track_roi_top.y <= 0 || track_roi_bot.x <= 0 || track_roi_bot.y <= 0) {
 				Rect ROI(roi_top, roi_bot);
 				crop_image = pre_crop_image(ROI);
+				cout << "True. crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
 			}
 			else {
 				Rect ROI(track_roi_top, track_roi_bot);
 				crop_image = pre_crop_image(ROI);
+				cout << "False. crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
 			}
 			
 			//imshow("crop_image", crop_image);
-			
+			//cout << "crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
+
 			ExtractFeature(pre_crop_image, 0); /// Feature Extraction
 			reduceFeatureUsingPCAinSVM(eMat, reduced, vectorHogGlcm, false); /// Reduce HOG using PCA
 			for (auto i = vec_glcm.begin(); i != vec_glcm.end(); ++i) vectorHogGlcm.push_back(*i);

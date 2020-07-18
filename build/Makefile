@@ -2157,6 +2157,19 @@ actionlib_msgs_generate_messages_cpp/fast:
 .PHONY : actionlib_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named trash_detection_copy
+
+# Build rule for target.
+trash_detection_copy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 trash_detection_copy
+.PHONY : trash_detection_copy
+
+# fast build rule for target.
+trash_detection_copy/fast:
+	$(MAKE) -f vision/CMakeFiles/trash_detection_copy.dir/build.make vision/CMakeFiles/trash_detection_copy.dir/build
+.PHONY : trash_detection_copy/fast
+
+#=============================================================================
 # Target rules for targets named trash_detection
 
 # Build rule for target.
@@ -2209,19 +2222,6 @@ img_subscriber/fast:
 .PHONY : img_subscriber/fast
 
 #=============================================================================
-# Target rules for targets named stereo_publisher
-
-# Build rule for target.
-stereo_publisher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 stereo_publisher
-.PHONY : stereo_publisher
-
-# fast build rule for target.
-stereo_publisher/fast:
-	$(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
-.PHONY : stereo_publisher/fast
-
-#=============================================================================
 # Target rules for targets named stereo_subscriber
 
 # Build rule for target.
@@ -2233,6 +2233,19 @@ stereo_subscriber: cmake_check_build_system
 stereo_subscriber/fast:
 	$(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/build
 .PHONY : stereo_subscriber/fast
+
+#=============================================================================
+# Target rules for targets named stereo_publisher
+
+# Build rule for target.
+stereo_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stereo_publisher
+.PHONY : stereo_publisher
+
+# fast build rule for target.
+stereo_publisher/fast:
+	$(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
+.PHONY : stereo_publisher/fast
 
 # Help Target
 help:
@@ -2400,12 +2413,13 @@ help:
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... trash_detection_copy"
 	@echo "... trash_detection"
 	@echo "... minoru_camera"
 	@echo "... target_detection"
 	@echo "... img_subscriber"
-	@echo "... stereo_publisher"
 	@echo "... stereo_subscriber"
+	@echo "... stereo_publisher"
 .PHONY : help
 
 

@@ -79,17 +79,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target install/local
 install/local: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
@@ -112,6 +101,17 @@ test:
 test/fast: test
 
 .PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # Special rule for the target install
 install: preinstall
@@ -166,6 +166,21 @@ preinstall/fast:
 depend:
 	cd /home/kisron/catkin_workspace/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
+
+# Convenience name for target.
+vision/CMakeFiles/trash_detection_copy.dir/rule:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 vision/CMakeFiles/trash_detection_copy.dir/rule
+.PHONY : vision/CMakeFiles/trash_detection_copy.dir/rule
+
+# Convenience name for target.
+trash_detection_copy: vision/CMakeFiles/trash_detection_copy.dir/rule
+
+.PHONY : trash_detection_copy
+
+# fast build rule for target.
+trash_detection_copy/fast:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/trash_detection_copy.dir/build.make vision/CMakeFiles/trash_detection_copy.dir/build
+.PHONY : trash_detection_copy/fast
 
 # Convenience name for target.
 vision/CMakeFiles/trash_detection.dir/rule:
@@ -228,21 +243,6 @@ img_subscriber/fast:
 .PHONY : img_subscriber/fast
 
 # Convenience name for target.
-vision/CMakeFiles/stereo_publisher.dir/rule:
-	cd /home/kisron/catkin_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 vision/CMakeFiles/stereo_publisher.dir/rule
-.PHONY : vision/CMakeFiles/stereo_publisher.dir/rule
-
-# Convenience name for target.
-stereo_publisher: vision/CMakeFiles/stereo_publisher.dir/rule
-
-.PHONY : stereo_publisher
-
-# fast build rule for target.
-stereo_publisher/fast:
-	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
-.PHONY : stereo_publisher/fast
-
-# Convenience name for target.
 vision/CMakeFiles/stereo_subscriber.dir/rule:
 	cd /home/kisron/catkin_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 vision/CMakeFiles/stereo_subscriber.dir/rule
 .PHONY : vision/CMakeFiles/stereo_subscriber.dir/rule
@@ -256,6 +256,21 @@ stereo_subscriber: vision/CMakeFiles/stereo_subscriber.dir/rule
 stereo_subscriber/fast:
 	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/build
 .PHONY : stereo_subscriber/fast
+
+# Convenience name for target.
+vision/CMakeFiles/stereo_publisher.dir/rule:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 vision/CMakeFiles/stereo_publisher.dir/rule
+.PHONY : vision/CMakeFiles/stereo_publisher.dir/rule
+
+# Convenience name for target.
+stereo_publisher: vision/CMakeFiles/stereo_publisher.dir/rule
+
+.PHONY : stereo_publisher
+
+# fast build rule for target.
+stereo_publisher/fast:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
+.PHONY : stereo_publisher/fast
 
 src/img_subscriber.o: src/img_subscriber.cpp.o
 
@@ -419,6 +434,33 @@ src/trash_detection.cpp.s:
 	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/trash_detection.dir/build.make vision/CMakeFiles/trash_detection.dir/src/trash_detection.cpp.s
 .PHONY : src/trash_detection.cpp.s
 
+src/trash_detection_copy.o: src/trash_detection_copy.cpp.o
+
+.PHONY : src/trash_detection_copy.o
+
+# target to build an object file
+src/trash_detection_copy.cpp.o:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/trash_detection_copy.dir/build.make vision/CMakeFiles/trash_detection_copy.dir/src/trash_detection_copy.cpp.o
+.PHONY : src/trash_detection_copy.cpp.o
+
+src/trash_detection_copy.i: src/trash_detection_copy.cpp.i
+
+.PHONY : src/trash_detection_copy.i
+
+# target to preprocess a source file
+src/trash_detection_copy.cpp.i:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/trash_detection_copy.dir/build.make vision/CMakeFiles/trash_detection_copy.dir/src/trash_detection_copy.cpp.i
+.PHONY : src/trash_detection_copy.cpp.i
+
+src/trash_detection_copy.s: src/trash_detection_copy.cpp.s
+
+.PHONY : src/trash_detection_copy.s
+
+# target to generate assembly for a file
+src/trash_detection_copy.cpp.s:
+	cd /home/kisron/catkin_workspace/build && $(MAKE) -f vision/CMakeFiles/trash_detection_copy.dir/build.make vision/CMakeFiles/trash_detection_copy.dir/src/trash_detection_copy.cpp.s
+.PHONY : src/trash_detection_copy.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -427,17 +469,18 @@ help:
 	@echo "... depend"
 	@echo "... install/strip"
 	@echo "... rebuild_cache"
-	@echo "... edit_cache"
 	@echo "... install/local"
 	@echo "... test"
+	@echo "... edit_cache"
+	@echo "... trash_detection_copy"
 	@echo "... trash_detection"
 	@echo "... install"
 	@echo "... minoru_camera"
 	@echo "... list_install_components"
 	@echo "... target_detection"
 	@echo "... img_subscriber"
-	@echo "... stereo_publisher"
 	@echo "... stereo_subscriber"
+	@echo "... stereo_publisher"
 	@echo "... src/img_subscriber.o"
 	@echo "... src/img_subscriber.i"
 	@echo "... src/img_subscriber.s"
@@ -456,6 +499,9 @@ help:
 	@echo "... src/trash_detection.o"
 	@echo "... src/trash_detection.i"
 	@echo "... src/trash_detection.s"
+	@echo "... src/trash_detection_copy.o"
+	@echo "... src/trash_detection_copy.i"
+	@echo "... src/trash_detection_copy.s"
 .PHONY : help
 
 

@@ -589,6 +589,7 @@ void detectAndDisplay(Mat frame){
 
 	//-- Detect waste
 	waste_cascade.detectMultiScale(frame_gray, waste, 1.1, 2, 0 | CV_HAAR_FIND_BIGGEST_OBJECT, Size(24, 24));
+	cout << "waste size " << waste.size() << endl;
 
 	for (size_t i = 0; i < waste.size(); i++)
 	{
@@ -768,11 +769,12 @@ void tracking() {
 
 void ExtractFeature(Mat capt, int looper) {
 	///load images
+	//crop_image.copyTo(image);
 	image = crop_image;
 	cvtColor(image, image, COLOR_BGR2GRAY);
 	cout << "habis cvtcolor" << endl;
-	imshow("image",image);
-	//resize(image, image, sizes);
+	//imshow("image",image);
+	resize(image, image, sizes);
 	cout << "habis resize" << endl;
 	if (image.empty()) cout << "No image loaded" << endl;
 
@@ -1052,13 +1054,16 @@ void deteksi_sampah(){
 	}
 	//disini awal programnya mas. ngambil gambar subscriber dimasukkan ke read_cam lef
 	// sebelumnya dia ngambil gambar dari cam_left.jpg hasil capture camera	
-	read_cam_left = locImgl1;//imread("/home/kisron/catkin_workspace/cam_left.jpg");
-	frame_cpy = locImgl1.clone();
+	//read_cam_left = imread("/home/kisron/catkin_workspace/cam_left.jpg");
+	locImgl1.copyTo(read_cam_left);
+	cout << "size " << read_cam_left.size() << " area " << read_cam_left.size().area() << " " << read_cam_left.cols << endl;
+	frame_cpy = read_cam_left.clone();
 	enchanceImage = read_cam_left.clone();
 	cv::cvtColor(enchanceImage, enchanceImage, CV_BGR2GRAY);
 	cv::blur(enchanceImage, enchanceImage, Size(3, 3));
 	pre_crop_image = frame_cpy.clone();
 	res = frame_cpy.clone();
+	cout << "pre_crop_image. size " << pre_crop_image.size() << " area " << pre_crop_image.size().area() << endl;
 	
 	//cv::createTrackbar(" Canny thresh:", "Canny", &thresholdC, 255, thresh_callback);
 		thresh_callback(0, 0);
@@ -1071,18 +1076,22 @@ void deteksi_sampah(){
 			if (run == 10000) run = 0;
 			ClassImg = frame_cpy.clone();
 
+			cout << track_roi_top.x << " " << track_roi_top.y << " " << track_roi_bot.x << " " << track_roi_bot.y << endl;
 			if (track_roi_top.x <= 0 || track_roi_top.y <= 0 || track_roi_bot.x <= 0 || track_roi_bot.y <= 0) {
 				Rect ROI(roi_top, roi_bot);
 				crop_image = pre_crop_image(ROI);
+				cout << "True. crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
 			}
 			else {
 				Rect ROI(track_roi_top, track_roi_bot);
 				crop_image = pre_crop_image(ROI);
+				cout << "False. crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
 			}
 			
 			//imshow("pre_crop_image", pre_crop_image);
 			//imshow("crop_image", crop_image);
-			/*
+			//cout << "crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
+
 			ExtractFeature(pre_crop_image, 0); /// Feature Extraction
 			reduceFeatureUsingPCAinSVM(eMat, reduced, vectorHogGlcm, false); /// Reduce HOG using PCA
 			for (auto i = vec_glcm.begin(); i != vec_glcm.end(); ++i) vectorHogGlcm.push_back(*i);
@@ -1120,8 +1129,7 @@ void deteksi_sampah(){
 		if (counter == (INT_MAX - 1000))
 			counter = 0;
 		///fps counter end		
-		*/
-}
+		
 }
 int main(int argc, char **argv)
 {
@@ -1161,7 +1169,7 @@ int main(int argc, char **argv)
 	while(ros::ok()){
 		deteksi_sampah();
 		imshow("frame_cpy",frame_cpy);
-		imshow("locimgl",locImgl1);
+		imshow("detect",ClassImg);
 		//imshow("Classification", ClassImg);
 		//imshow("crop_image", crop_image);
 		ros::spinOnce();

@@ -342,14 +342,15 @@
 /home/kisron/catkin_workspace/build/rosserial/rosserial_windows/CMakeFiles/install.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/install/strip.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/rebuild_cache.dir
-/home/kisron/catkin_workspace/build/vision/CMakeFiles/edit_cache.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/install/local.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/test.dir
+/home/kisron/catkin_workspace/build/vision/CMakeFiles/edit_cache.dir
+/home/kisron/catkin_workspace/build/vision/CMakeFiles/trash_detection_copy.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/trash_detection.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/install.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/minoru_camera.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/list_install_components.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/target_detection.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/img_subscriber.dir
-/home/kisron/catkin_workspace/build/vision/CMakeFiles/stereo_publisher.dir
 /home/kisron/catkin_workspace/build/vision/CMakeFiles/stereo_subscriber.dir
+/home/kisron/catkin_workspace/build/vision/CMakeFiles/stereo_publisher.dir
