@@ -19,6 +19,9 @@
 #include <opencv2/core/mat.hpp>
 #include <opencv2/calib3d/calib3d.hpp>
 
+#include <cv_bridge/cv_bridge.h>
+#include <image_transport/image_transport.h> 
+
 #include <iostream>
 #include <fstream>
 
@@ -46,8 +49,15 @@ struct StereoFunction{
   CvMat* _Q;			//reprojection matrix
   CvMat* _CamData;
 
+  //Mat mx1_Rep, my1_Rep;
+
+
   CvSize imageSize;
-  IplImage *img1,
+  Size imageSize_Mat;
+
+  IplImage *ipl_img_r,
+       *ipl_img_l,
+       *img1,
        *img2,
        *img_detect,
        *thres_img,
@@ -60,15 +70,26 @@ struct StereoFunction{
        *vdisp,
        *pair,
        *depthM;
-
+Mat imgl, imgr;
+Mat my1_Rep, mx1_Rep,mx2_Rep,my2_Rep;
+Mat img_detek;
+Mat img1_g,img2_g,img1r_new,img2r_new;
+Mat disp_new, vdisp_new;
+Mat frame_input;
+  
+  void stereoInit_coba(StereoGrab*);
   void stereoInit(StereoGrab*);
   void stereoCalibration(StereoGrab*);
   void stereoCorrelation(StereoGrab*);
   void stereoCorrelation_deteksi(StereoGrab*);
+  void cobafung(StereoGrab*);
+  void stereoDeteksi(StereoGrab*);
   void stereoSavePointCloud();
   void stereoDetect();
   void deteksi();
   void target_detection();
+  void r_imageCallback(const sensor_msgs::ImageConstPtr& msg);
+  void l_imageCallback(const sensor_msgs::ImageConstPtr& msg);
 
   double reprojectionVars[6];
 

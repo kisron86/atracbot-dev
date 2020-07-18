@@ -70,6 +70,9 @@ include_directories(${OpenCV_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 add_executable(trash_detection src/trash_detection.cpp)
 target_link_libraries(trash_detection ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
+add_executable(trash_detection_copy src/trash_detection_copy.cpp)
+target_link_libraries(trash_detection_copy ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
 add_executable(target_detection src/target_detection.cpp)
 add_dependencies(target_detection ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(target_detection ${catkin_LIBRARIES} ${OpenCV_LIBS})

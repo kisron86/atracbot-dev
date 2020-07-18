@@ -6,6 +6,15 @@ vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /home/kisron/
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /home/kisron/catkin_workspace/src/my_roscpp_library/include/my_roscpp_library/my_super_roscpp_library.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /home/kisron/catkin_workspace/src/vision/src/target_detection.cpp
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/cv_bridge/cv_bridge.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/camera_publisher.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/camera_subscriber.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/exception.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/image_transport.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/loader_fwds.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/publisher.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/single_subscriber_publisher.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/subscriber.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/image_transport/transport_hints.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/ros/assert.h
@@ -62,8 +71,10 @@ vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melo
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/CameraInfo.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/CompressedImage.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/Image.h
+vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/RegionOfInterest.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/sensor_msgs/image_encodings.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 vision/CMakeFiles/target_detection.dir/src/target_detection.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h

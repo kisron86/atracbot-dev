@@ -1,18 +1,18 @@
 #include "ros/ros.h"
 #include "std_msgs/String.h"
 #include "sensor_msgs/Range.h"
-#include "rosserial_arduino/Adc.h"
+#include <std_msgs/Float64.h>
+#include <iostream>
+
+using namespace std;
 
 static double jarakcm;
 static int persen_level, persen_v_mtr, persen_v_pc;
 static double v_motor, v_pc,i_motor,i_pc;
 
-void Baca_adc(const rosserial_arduino::Adc::ConstPtr msg2)
+void baca_v_motor (const std_msgs::Float64::ConstPtr& v_motor_data)
 {
-  v_motor = msg2->adc0;
-  v_pc = msg2-> adc1;
-  i_motor = msg2->adc2;
-  i_pc = msg2->adc3;
+  v_motor = v_motor_data->data;
 
   if (v_motor < 11.60){ persen_v_mtr = 0; }
     else if (v_motor < 11.70 && v_motor > 11.60){ persen_v_mtr = 10; }
@@ -26,7 +26,11 @@ void Baca_adc(const rosserial_arduino::Adc::ConstPtr msg2)
     else if (v_motor < 12.50 && v_motor > 12.40){ persen_v_mtr = 90; }
     else if (v_motor < 12.60&& v_motor > 12.50){ persen_v_mtr = 100; }
     else { persen_v_mtr = 0; }
-  printf("v_mtr : %d persen ",persen_v_mtr);
+}
+
+void baca_v_pc (const std_msgs::Float64::ConstPtr& v_pc_data)
+{
+  v_pc = v_pc_data->data;
 
   if (v_pc < 11.60){ persen_v_pc = 0; }
     else if (v_pc < 11.70 && v_pc > 11.60){ persen_v_pc = 10; }
@@ -40,11 +44,21 @@ void Baca_adc(const rosserial_arduino::Adc::ConstPtr msg2)
     else if (v_pc < 12.50 && v_pc > 12.40){ persen_v_pc = 90; }
     else if (v_pc < 12.60&& v_pc > 12.50){ persen_v_pc = 100; }
     else { persen_v_pc = 0; }
-    printf("v_pc : %d persen ",persen_v_pc);
+
 }
-void Baca_jarak(const sensor_msgs::Range::ConstPtr& msg)
+void baca_i_motor (const std_msgs::Float64::ConstPtr& i_motor_data)
 {
-  jarakcm = (msg->range*-1)+35;
+  i_motor = i_motor_data->data;
+}
+void baca_i_pc (const std_msgs::Float64::ConstPtr& i_pc_data)
+{
+  i_pc = i_pc_data->data;
+}
+
+void Baca_jarak(const sensor_msgs::Range::ConstPtr& us_data)
+{
+  float jarakcmtmp = us_data->range;
+  jarakcm = (jarakcmtmp*-1)+35;
   //printf("jarak new:%.2f\n",jarakcm);
   if(jarakcm > 0.0 && jarakcm < 1.0){persen_level = 0;}
   else if(jarakcm > 1.0 && jarakcm < 2.0){persen_level = 3;}
@@ -81,17 +95,30 @@ void Baca_jarak(const sensor_msgs::Range::ConstPtr& msg)
   else if(jarakcm > 32.0 && jarakcm < 33.0){persen_level = 96;}
   else if(jarakcm > 33.0 && jarakcm < 34.0){persen_level = 99;}
   else if(jarakcm > 34.0){persen_level = 100;}
-  printf("level : %d persen\n",persen_level);
+  //printf("level : %d persen\n",persen_level);
 }
 
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "data_conversion");
   ros::NodeHandle nh;
-  ros::Subscriber sub = nh.subscribe("data_jarak", 1000, Baca_jarak);
-  ros::Subscriber sub2 = nh.subscribe("data_adc", 1000, Baca_adc);
+  ros::Subscriber sub1 = nh.subscribe("us_topic", 1000, Baca_jarak);
+  ros::Subscriber sub2 = nh.subscribe("v_motor_topic", 1000, baca_v_motor);
+  ros::Subscriber sub3 = nh.subscribe("v_pc_topic", 1000, baca_v_pc);
+  ros::Subscriber sub4 = nh.subscribe("i_motor_topic", 1000, baca_i_motor);
+  ros::Subscriber sub5 = nh.subscribe("i_pc_topic", 1000, baca_i_pc);
+  ros::Rate loop_rate(1);
 
+  while(ros::ok()){
+    //cout << "v_motor" << v_motor << endl;
+    //printf("v_motor=[%.2f]->v_pc=[%.2f]->i_mtr=[%.2f]->i_pc=[%.2f]->us=[%.2f]\n",v_motor,v_pc,i_motor,i_pc,jarakcm);
+    printf("persen : v_motor=%d->v_pc=%d->us=%d\n",persen_v_mtr,persen_v_pc,persen_level);
+    
+    ros::spinOnce();
+    loop_rate.sleep();
+}
   ros::spin();
+
 
   return 0;
 }

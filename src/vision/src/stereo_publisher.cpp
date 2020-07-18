@@ -46,13 +46,16 @@ int main(int argc, char **argv){
     while (ros::ok()) {
         grab->stereGrabFrames();
         
-	    frame1 = grab->imageLeft;
-	    frame2 = grab->imageRight;
-        cvCvtColor(grab->imageLeft, immg1, CV_RGB2GRAY);
-	    cvCvtColor(grab->imageRight, immg2, CV_RGB2GRAY);
+	    //frame1 = grab->imageLeft;
+	    //frame2 = grab->imageRight;
+        //cvCvtColor(frame1, immg1, CV_RGB2GRAY);
+	    //cvCvtColor(frame2, immg2, CV_RGB2GRAY);
+
+        cv::Mat m1 = cv::cvarrToMat(frame1, true);
+        cv::Mat m2 = cv::cvarrToMat(frame2, true);
         
-        msgl = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg1).toImageMsg();
-        msgr = cv_bridge::CvImage(std_msgs::Header(),"mono8", immg2).toImageMsg();
+        msgl = cv_bridge::CvImage(std_msgs::Header(),"bgr8", m1).toImageMsg();
+        msgr = cv_bridge::CvImage(std_msgs::Header(),"bgr8", m2).toImageMsg();
 
         pubr.publish(msgr);
         publ.publish(msgl);
@@ -62,8 +65,8 @@ int main(int argc, char **argv){
 
         //imshow("left", m2);
         //imshow("right", m1);
-        cvShowImage("camera left", immg1);
-		cvShowImage("camera right", immg2);
+        //cvShowImage("camera left", immg1);
+		//cvShowImage("camera right", immg2);
         
         //ros::spinOnce();
         //n++;
@@ -78,5 +81,6 @@ int main(int argc, char **argv){
     //grab->stereoGrabStopCam();
     return 0;
 }
+
 
 

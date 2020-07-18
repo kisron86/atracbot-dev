@@ -90,7 +90,7 @@ int fps_counter = 0, fps_max = 0;
 RNG rng(12345);
 vector<Rect> waste;
 Point roi_top; Point roi_bot;
-Mat frame_cpy;
+Mat frame_cpy(320,240,CV_8UC3);
 int run = 0;
 
 /// Parameter Tracking
@@ -135,105 +135,10 @@ Mat meas(measSize, 1, type);    // [z_x,z_y,z_w,z_h]
 StereoGrab* grab= new StereoGrab();
 StereoFunction* stereoFunc = new StereoFunction();
 
-void webcam1(){
-	VideoCapture capr(2), capl(4);
-	//reduce frame size
-	capl.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
-	capl.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-	capr.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
-	capr.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-	namedWindow("Left");
-	namedWindow("Right");
-	while (1){
-	
-		Mat camera1,camera2;
-		capl.read(camera1);
-		capr.read(camera2);
-		cvtColor(camera1, camera1, COLOR_BGR2GRAY);
-		cvtColor(camera2, camera2, COLOR_BGR2GRAY);
-		imshow("Left", camera1);
-		imshow("Right", camera2);
-		if (waitKey(30) >= 0) break;
-	}
-	capl.release();
-	capr.release();
-	
-}
+Mat locImgl1(320,240,CV_8UC3);
+Mat locImgr1(320,240,CV_8UC3);
 
-/////////////////////------------CAPTURE IMAGE-------------////////////////////////////
-void capture(){
 
-	VideoCapture capr(2), capl(4);
-	//reduce frame size
-	capl.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
-	capl.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-	capr.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
-	capr.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-	namedWindow("Left");
-	namedWindow("Right");
-	cout << "Tekan C simpan gambar ..." << endl;
-	char choice = 'z';
-	int count = 0;
-		while(choice != 'q') {
-		//grab frames quickly in succession
-		capl.grab();
-		capr.grab();
-		//execute the heavier decoding operations
-		Mat framel, framer;
-		capl.retrieve(framel);
-		capr.retrieve(framer);
-
-		cvtColor(framel, framel, COLOR_BGR2GRAY);
-		cvtColor(framer, framer, COLOR_BGR2GRAY);
-
-			if(framel.empty() || framer.empty()) break;
-				imshow("Left", framel);
-				imshow("Right", framer);
-			if(choice == 'c') {
-		//save files at proper locations if user presses 'c'
-				stringstream l_name, r_name;
-				l_name << "left" << setw(2) << setfill('0') << count << ".jpg";
-				r_name << "right" << setw(2) << setfill('0') << count << ".jpg";
-				imwrite( l_name.str(), framel);
-				imwrite( r_name.str(), framer);
-				cout << "Saved set " << count << endl;
-				count++;
-			}
-		choice = char(waitKey(1));
-		}
-	capl.release();
-	capr.release();
-}
-
-void view_camera(){
-	CvSize imageSize = { 0, 0 };
-
-	grab->stereoGrabInitFrames();
-	grab->stereGrabFrames();
-	
-	IplImage *frame1 = grab->imageLeft;
-	IplImage *frame2 = grab->imageRight;
-	IplImage *immg1, *immg2;
-
-	immg1 = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 1);
-	immg2 = cvCreateImage(cvSize(320, 240), IPL_DEPTH_8U, 1);
-
-	char choice = 'z';
-	while(choice!='q'){
-
-		grab->stereGrabFrames();
-		frame1 = grab->imageLeft;
-		frame2 = grab->imageRight;
-
-		cvCvtColor(grab->imageLeft, immg1, CV_RGB2GRAY);
-		cvCvtColor(grab->imageRight, immg2, CV_RGB2GRAY);
-
-		cvShowImage("camera left", immg1);
-		cvShowImage("camera right", immg2);
-			
-		if(cvWaitKey(15)==27) break;
-	}
-}
 
 void playcal(){
 
@@ -357,102 +262,6 @@ void mouseHandler(int event, int x, int y, int flags, void *param){
 	//l = cvGet2D(stereoFunc->depthM, x, y);
 	printf("Distance to this object is: %f cm \n",(float)cvGet2D(stereoFunc->depthM, x, y).val[0]);
 	break;
-	}
-}
-
-void camera_gray(){
-	grab->stereoGrabInitFrames();
-	grab->stereGrabFrames();
-	IplImage *frame1 = grab->imageLeft;
-	IplImage *frame2 = grab->imageRight;
-	IplImage *grayfrm2, *grayfrm1;
-	CvMat *frem1;
-
-	int height, width, step, channels, k, i_max;
-	int *hist;
-
-	//gambar kamera kiri
-	uchar *datakiri;
-	uchar **gray_arrkiri;
-
-	//gambar kamera kanan
-	uchar *datakanan;
-	uchar **gray_arrkanan;
-
-	//definisi gambar
-	height = frame1->height; //tinggi gambar
-	width = frame1->width;  //lebar gambar
-	step = frame1->widthStep;	// array pada elementuntuk satu baris pada gambar
-	channels = frame1->nChannels;	//channels R.G.B.
-	datakiri = (uchar *)frame1->imageData;
-	datakanan = (uchar *)frame2->imageData;
-
-	//end definisi gambar
-
-	char choice = 'z';
-	while (choice != 'q'){
-
-		grab->stereGrabFrames();
-		frame1 = grab->imageLeft;
-		frame2 = grab->imageRight;
-		
-		// untuk mengalokasikan blok memori dan mengembalikan pointer ke awal blok 
-		gray_arrkiri = (uchar **)malloc(sizeof(uchar *)*(height + 1));
-		// untuk mengalokasikan blok memori dan mengembalikan pointer ke awal blok 
-		gray_arrkanan = (uchar **)malloc(sizeof(uchar *)*(height + 1));
-		// Convert the RGB image to a grayscale image 
-		for (int i = 0; i < height; i++){
-			gray_arrkiri[i] = (uchar *)malloc(sizeof(uchar)*(width + 1));
-			gray_arrkanan[i] = (uchar *)malloc(sizeof(uchar)*(width + 1));
-
-			for (int j = 0; j < width; j++) {   //ISO grayscale image is 11%BLUE + 56% GREEN + 33% RED..... so converitng 1d array into 2d array   
-				gray_arrkiri[i][j] = (0.11*datakiri[i*step + j*channels] + 0.56*datakiri[i*step + j*channels + 1] + 0.33*datakiri[i*step + j*channels + 2]);
-				gray_arrkanan[i][j] = (0.11*datakanan[i*step + j*channels] + 0.56*datakanan[i*step + j*channels + 1] + 0.33*datakanan[i*step + j*channels + 2]);
-				//histo_arr[i][j] = 0;
-			}
-		}
-
-		grayfrm1 = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
-		grayfrm2 = cvCreateImage(cvSize(width, height), IPL_DEPTH_8U, 1);
-
-		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++) {
-				grayfrm1->imageData[i*grayfrm1->widthStep + j*grayfrm1->nChannels] = gray_arrkiri[i][j]; // membuat gambar gray
-				grayfrm2->imageData[i*grayfrm2->widthStep + j*grayfrm2->nChannels] = gray_arrkanan[i][j]; // membuat gambar gray
-			}
-		}
-		cvShowImage("camera left", frame1);
-		cvShowImage("camera right", frame2);
-		cvShowImage("GrayScaled grayfrm1", grayfrm1);
-		cvShowImage("GrayScaled grayfrm2", grayfrm2);
-		if (cvWaitKey(15) == 27) break;
-	}
-	cvReleaseImage(&grayfrm1);
-	cvReleaseImage(&grayfrm2);
-	cvReleaseImage(&frame1);
-	cvReleaseImage(&frame2);
-
-	grab->stereoGrabStopCam();
-
-}
-
-void cameraMat(){
-	grab->stereoGrabInitFrames();
-	grab->stereGrabFrames();
-	IplImage *frame1 = grab->imageLeft;
-	IplImage *frame2 = grab->imageRight;
-
-	Mat frmm1 = cvarrToMat(frame1);
-	Mat frmm2 = cvarrToMat(frame2);
-
-	while (1){
-	grab->stereGrabFrames();
-
-	imshow("cam2", frmm2);
-	imshow("cam1", frmm1);
-
-	if (waitKey(30) >= 0)
-		break;
 	}
 }
 
@@ -780,6 +589,7 @@ void detectAndDisplay(Mat frame){
 
 	//-- Detect waste
 	waste_cascade.detectMultiScale(frame_gray, waste, 1.1, 2, 0 | CV_HAAR_FIND_BIGGEST_OBJECT, Size(24, 24));
+	cout << "waste size " << waste.size() << endl;
 
 	for (size_t i = 0; i < waste.size(); i++)
 	{
@@ -959,9 +769,13 @@ void tracking() {
 
 void ExtractFeature(Mat capt, int looper) {
 	///load images
-	image = crop_image.clone();
+	//crop_image.copyTo(image);
+	image = crop_image;
 	cvtColor(image, image, COLOR_BGR2GRAY);
+	cout << "habis cvtcolor" << endl;
+	//imshow("image",image);
 	resize(image, image, sizes);
+	cout << "habis resize" << endl;
 	if (image.empty()) cout << "No image loaded" << endl;
 
 	/// begin parsing image to 16 cell 8*8
@@ -1033,9 +847,18 @@ void Classifier() {
 	if (flag_class_result == 1) {
 		putText(ClassImg, className, track_roi_top, FONT_HERSHEY_PLAIN, 1, Scalar(0, 255, 255), 2);
 		if(flag_bukan_sampah == 1)
-			arrowedLine(ClassImg, Point(160, 240), roi_center, Scalar(220, 20, 60), 2, 8, 0);
+		{
+		arrowedLine(ClassImg, Point(160, 240), roi_center, Scalar(220, 20, 60), 2, 8, 0);
+		//tambah
+		//imshow("Classification", ClassImg);
+		//grab->stereoGrabStopCam();
+		///cvReleaseImage("Classification", &ClassImg);
+		//ClassImg.release();
+		//break;
+		//stereoFunc->stereoCorrelation_deteksi(grab);
+		//grab->stereGrabFrames();
+		}
 	}
-
 	///Write image
 	/*sprintf_s(buffer, "D:\\Project\\TA\\Data_Trainer\\Clip_Images\\DataTraining\\Hasil_Testing\\Test%u.png", nameCount++);
 	//imwrite(buffer, ClassImg);
@@ -1183,73 +1006,66 @@ void thresh_callback(int, void*) {
 	Canny(enchanceImage, enchanceImage, thresholdC, thresholdC * 2, 3);
 }
 
-int main(int argc, char **argv)
+Mat cobak(320,240,CV_8UC3);
+class Listener
 {
-    ros::init(argc, argv, "trash_detection");
-    ros::NodeHandle nh;
-	
-    //view_camera();		
+public:
+    void r1_imageCallback(const sensor_msgs::ImageConstPtr& msg);
+	void l1_imageCallback(const sensor_msgs::ImageConstPtr& msg);
+};
 
-	if(CALIBRATION) playcal();
-	loadcorrelation();
-	grab->stereoGrabInitFrames();
-	grab->stereGrabFrames();
-	stereoFunc->stereoInit(grab);
+void Listener::r1_imageCallback(const sensor_msgs::ImageConstPtr& msg){
+    try {
+        cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(locImgr1); // ditampung nang kene
+		//cobak = locImgr1;
+		//imshow("coba", locImgr1);
+	} catch (cv_bridge::Exception& e) {
+        ROS_ERROR("Could not conver from '%s' to 'bgr8'.", msg->encoding.c_str());
+    }
+}
 
+void Listener::l1_imageCallback(const sensor_msgs::ImageConstPtr& msg){
+    try {
+        cv_bridge::toCvShare(msg, "bgr8")->image.copyTo(locImgl1);
+    } catch (cv_bridge::Exception& e) {
+        ROS_ERROR("Could not conver from '%s' to 'bgr8'.", msg->encoding.c_str());
+    }
+}
+
+Mat read_cam_left(320,240,CV_8UC3);
+Mat eMat;
+
+
+void deteksi_sampah(){
 	time_t start, end;
 	int counter = 0;
 	double sec;
 	double fps;
 
-	/// Load HOG
-	FileStorage read_FeatureXml("/home/kisron/catkin_workspace/FeatureXML/eigenValues_All_2.xml", FileStorage::READ);
-	if (read_FeatureXml.isOpened()) cout << "HOGSampah xml loaded" << endl;
-	///Feature Mat
-	Mat eMat;
-	read_FeatureXml["Descriptor_of_images"] >> eMat;
-	read_FeatureXml.release();
-
-	/// Load trained SVM xml data
-	svm.load("/home/kisron/catkin_workspace/FeatureXML/Svm_Feature_Linear_All_2.xml");
-	cout << "SVM Feature Linear All Loaded" << endl;
-
-	//  -- 1. Load the cascades
-	if (!waste_cascade.load(waste_cascade_name)) { printf("--(!)Error loading xml\n"); };
+	// fps counter begin
+	if (counter == 0){
+		time(&start);
+	}
+	//stereoCorrelationControl();
+	//grab->stereGrabFrames();
+	stereoFunc->stereoCorrelation(grab);
+	if (cvWaitKey(1) == 32) {
+		flag_print = 1;
+	}
+	//disini awal programnya mas. ngambil gambar subscriber dimasukkan ke read_cam lef
+	// sebelumnya dia ngambil gambar dari cam_left.jpg hasil capture camera	
+	//read_cam_left = imread("/home/kisron/catkin_workspace/cam_left.jpg");
+	locImgl1.copyTo(read_cam_left);
+	cout << "size " << read_cam_left.size() << " area " << read_cam_left.size().area() << " " << read_cam_left.cols << endl;
+	frame_cpy = read_cam_left.clone();
+	enchanceImage = read_cam_left.clone();
+	cv::cvtColor(enchanceImage, enchanceImage, CV_BGR2GRAY);
+	cv::blur(enchanceImage, enchanceImage, Size(3, 3));
+	pre_crop_image = frame_cpy.clone();
+	res = frame_cpy.clone();
+	cout << "pre_crop_image. size " << pre_crop_image.size() << " area " << pre_crop_image.size().area() << endl;
 	
-	//char choice='z';
-	while(ros::ok()){
-		
-
-		// fps counter begin
-		if (counter == 0){
-			time(&start);
-		}
-		//stereoCorrelationControl();
-		grab->stereGrabFrames();
-		stereoFunc->stereoCorrelation(grab);
-		if (cvWaitKey(1) == 27) {
-			
-			//cout << "Capturing ROI..." << endl;
-			//sprintf(buffer1, "C:\\Users\\irfan\\OneDrive\\Documents\\TA\\TA_Akhir\\Project\\DataTraining\\img%u.png", imcount++);
-			//sprintf(buffer1, "/home/kisron/catkin_workspace/Project_Bang_Salimi/DataTraining/DataTrainAll/img%u.png", imcount++);
-			//sprintf(buffer1, "/home/kisron/catkin_workspace/Data_Training/img%u.png", imcount++);
-			//imwrite(buffer1, crop_image);
-			//imshow("Cropped image", crop_image);
-		}
-
-		if (cvWaitKey(1) == 32) {
-			flag_print = 1;
-		}
-		//Mat read_cam_left = imread("C:\\Users\\irfan\\OneDrive\\Documents\\TA\\TA_Akhir\\Project\\bismillah vision 8 sukses\\bismillah vision\\cam_left.jpg");
-		Mat read_cam_left = imread("/home/kisron/catkin_workspace/cam_left.jpg");
-		frame_cpy = read_cam_left.clone();
-		enchanceImage = read_cam_left.clone();
-		cv::cvtColor(enchanceImage, enchanceImage, CV_BGR2GRAY);
-		cv::blur(enchanceImage, enchanceImage, Size(3, 3));
-		pre_crop_image = frame_cpy.clone();
-		res = frame_cpy.clone();
-		
-		//cv::createTrackbar(" Canny thresh:", "Canny", &thresholdC, 255, thresh_callback);
+	//cv::createTrackbar(" Canny thresh:", "Canny", &thresholdC, 255, thresh_callback);
 		thresh_callback(0, 0);
 		if (!frame_cpy.empty()) {
 			if(run==0 || run%5==0) 
@@ -1260,23 +1076,29 @@ int main(int argc, char **argv)
 			if (run == 10000) run = 0;
 			ClassImg = frame_cpy.clone();
 
+			cout << track_roi_top.x << " " << track_roi_top.y << " " << track_roi_bot.x << " " << track_roi_bot.y << endl;
 			if (track_roi_top.x <= 0 || track_roi_top.y <= 0 || track_roi_bot.x <= 0 || track_roi_bot.y <= 0) {
 				Rect ROI(roi_top, roi_bot);
 				crop_image = pre_crop_image(ROI);
+				cout << "True. crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
 			}
 			else {
 				Rect ROI(track_roi_top, track_roi_bot);
 				crop_image = pre_crop_image(ROI);
+				cout << "False. crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
 			}
 			
+			//imshow("pre_crop_image", pre_crop_image);
 			//imshow("crop_image", crop_image);
-			
+			//cout << "crop_image. size " << crop_image.size() << " area " << crop_image.size().area() << endl;
+
 			ExtractFeature(pre_crop_image, 0); /// Feature Extraction
 			reduceFeatureUsingPCAinSVM(eMat, reduced, vectorHogGlcm, false); /// Reduce HOG using PCA
 			for (auto i = vec_glcm.begin(); i != vec_glcm.end(); ++i) vectorHogGlcm.push_back(*i);
 			int no = 0;
 			for (auto i = vectorHogGlcm.begin(); i != vectorHogGlcm.end(); ++i) imgToSvm.at<float>(0, no++) = *i;
 			vec_glcm.clear(); vectorHogGlcm.clear(); /// Empty the vector
+			cout << "masuk classifier" << endl;
 			Classifier();
 			print_distance_angle();
 		}
@@ -1306,14 +1128,53 @@ int main(int argc, char **argv)
 		/// overflow protection
 		if (counter == (INT_MAX - 1000))
 			counter = 0;
-		///fps counter end
+		///fps counter end		
+		
+}
+int main(int argc, char **argv)
+{
+    ros::init(argc, argv, "trash_detection");
+    ros::NodeHandle nh;
+	Listener listener;
+    image_transport::ImageTransport it(nh);
+    image_transport::Subscriber subr = it.subscribe("camera/right/image_raw", 1, &Listener::r1_imageCallback,&listener);
+    image_transport::Subscriber subl = it.subscribe("camera/left/image_raw", 1, &Listener::l1_imageCallback,&listener);
+	
+    //view_camera();		
 
-		imshow("Classification", ClassImg);
+	if(CALIBRATION) playcal();
+	loadcorrelation();
+	//grab->stereoGrabInitFrames();
+	//grab->stereGrabFrames();
+	stereoFunc->stereoInit(grab);
+
+	
+
+	/// Load HOG
+	FileStorage read_FeatureXml("/home/kisron/catkin_workspace/FeatureXML/eigenValues_All_2.xml", FileStorage::READ);
+	if (read_FeatureXml.isOpened()) cout << "HOGSampah xml loaded" << endl;
+	///Feature Mat
+	
+	read_FeatureXml["Descriptor_of_images"] >> eMat;
+	read_FeatureXml.release();
+
+	/// Load trained SVM xml data
+	svm.load("/home/kisron/catkin_workspace/FeatureXML/Svm_Feature_Linear_All_2.xml");
+	cout << "SVM Feature Linear All Loaded" << endl;
+
+	//  -- 1. Load the cascades
+	if (!waste_cascade.load(waste_cascade_name)) { printf("--(!)Error loading xml\n"); };
+	
+	//char choice='z';
+	while(ros::ok()){
+		deteksi_sampah();
+		imshow("frame_cpy",frame_cpy);
+		imshow("detect",ClassImg);
+		//imshow("Classification", ClassImg);
+		//imshow("crop_image", crop_image);
+		ros::spinOnce();
 		if(waitKey(30) == 27){ break; }   //27 ASCII Esc
-
 	}
-	//Flush and close the video file
-//	oVideoWriter.release();
 	destroyAllWindows();
 	grab->stereoGrabStopCam();
 

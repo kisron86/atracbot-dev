@@ -26,6 +26,8 @@ int main(int argc, char **argv)
 #include "std_msgs/Float64.h"
 #include "sensor_msgs/Range.h"
 #include "rosserial_arduino/Adc.h"
+#include <iostream>
+using namespace std;
 
 static double Vmtr, Vpc, Imtr,Ipc;
 static double level;
@@ -76,6 +78,16 @@ static double delta_tnew2 = 0.1;
 static double slope2;
 static double estimasi2;
 
+void baca_v_motor (const std_msgs::Float64::ConstPtr& v_motor_data)
+{
+  Vmtr = v_motor_data->data;
+}
+
+void baca_v_pc (const std_msgs::Float64::ConstPtr& v_pc_data)
+{
+  Vpc = v_pc_data->data;
+}
+
 void chatterCallback(const sensor_msgs::Range::ConstPtr& range_msg)
 {
   level = range_msg->range;
@@ -88,7 +100,30 @@ void chatterCallback2(const rosserial_arduino::Adc::ConstPtr& adc_msg)
   Vpc = adc_msg->adc1;
   Imtr = adc_msg->adc2;
   Ipc = adc_msg->adc3;
-  double Pmtr = Vmtr * Imtr;
+  }
+
+int main(int argc, char **argv)
+{
+  ros::init(argc, argv, "prediction_system");
+  ros::NodeHandle nh;
+
+  //ros::Subscriber sub1 = nh.subscribe("us_topic", 1000, Baca_jarak);
+  ros::Subscriber sub1 = nh.subscribe("v_motor_topic", 1000, baca_v_motor);
+  ros::Subscriber sub2 = nh.subscribe("v_pc_topic", 1000, baca_v_pc);
+  
+  //ros::Subscriber sub = nh.subscribe("data_jarak", 1000, chatterCallback);
+  //ros::Subscriber sub2 = nh.subscribe("data_adc", 1000, chatterCallback2);
+
+  ros::Publisher chatter_pub_motor = nh.advertise<std_msgs::Float64>("motor_estimation", 1000);
+  ros::Publisher chatter_pub_pc = nh.advertise<std_msgs::Float64>("pc_estimation", 1000);
+  ros::Rate loop_rate(10);
+
+  while (ros::ok())
+  {
+    std_msgs::Float64 est1;
+    std_msgs::Float64 est2;
+
+    double Pmtr = Vmtr * Imtr;
   double Ppc  = Vpc * Ipc;
 
   double vNew_mtr, vNew_pc;
@@ -167,29 +202,11 @@ void chatterCallback2(const rosserial_arduino::Adc::ConstPtr& adc_msg)
 
     if (estimasi < 0.0){ estimasi = 0.0; }
     if (estimasi2 < 0.0){ estimasi2 = 0.0; }
-    printf("kalman: %f\n",x_est);
+    //printf("kalman: %f\n",x_est);
 
-    //cout << "Kalman : " << x_est << " " << x_est2 << " Asli :" << Vmtr << " " << Vpc <<" " << estimasi<< " " << estimasi2<< endl;
+    cout << "Kalman : " << x_est << " " << x_est2 << " Asli :" << Vmtr << " " << Vpc <<" Estimation: " << estimasi<< " " << estimasi2<< endl;
 
 //  printf("v_motor=[%.2f]->v_pc=[%.2f]->i_mtr=[%.2f]->i_pc=[%.2f]\n",v_motor,v_pc,i_motor,i_pc);
-}
-
-int main(int argc, char **argv)
-{
-  ros::init(argc, argv, "subscriber");
-  ros::NodeHandle nh;
-
-  ros::Subscriber sub = nh.subscribe("data_jarak", 1000, chatterCallback);
-  ros::Subscriber sub2 = nh.subscribe("data_adc", 1000, chatterCallback2);
-
-  ros::Publisher chatter_pub_motor = nh.advertise<std_msgs::Float64>("motor_estimation", 1000);
-  ros::Publisher chatter_pub_pc = nh.advertise<std_msgs::Float64>("pc_estimation", 1000);
-  ros::Rate loop_rate(10);
-
-  while (ros::ok())
-  {
-    std_msgs::Float64 est1;
-    std_msgs::Float64 est2;
 
     est1.data = estimasi;
     est2.data = estimasi2;

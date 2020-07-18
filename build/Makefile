@@ -1715,6 +1715,175 @@ geometry_msgs_generate_messages_nodejs/fast:
 .PHONY : geometry_msgs_generate_messages_nodejs/fast
 
 #=============================================================================
+# Target rules for targets named telegram_ros_generate_messages_eus
+
+# Build rule for target.
+telegram_ros_generate_messages_eus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_generate_messages_eus
+.PHONY : telegram_ros_generate_messages_eus
+
+# fast build rule for target.
+telegram_ros_generate_messages_eus/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_generate_messages_eus.dir/build.make telegram_ros/CMakeFiles/telegram_ros_generate_messages_eus.dir/build
+.PHONY : telegram_ros_generate_messages_eus/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_gencpp
+
+# Build rule for target.
+telegram_ros_gencpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_gencpp
+.PHONY : telegram_ros_gencpp
+
+# fast build rule for target.
+telegram_ros_gencpp/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_gencpp.dir/build.make telegram_ros/CMakeFiles/telegram_ros_gencpp.dir/build
+.PHONY : telegram_ros_gencpp/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_generate_messages
+
+# Build rule for target.
+telegram_ros_generate_messages: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_generate_messages
+.PHONY : telegram_ros_generate_messages
+
+# fast build rule for target.
+telegram_ros_generate_messages/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_generate_messages.dir/build.make telegram_ros/CMakeFiles/telegram_ros_generate_messages.dir/build
+.PHONY : telegram_ros_generate_messages/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_generate_messages_cpp
+
+# Build rule for target.
+telegram_ros_generate_messages_cpp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_generate_messages_cpp
+.PHONY : telegram_ros_generate_messages_cpp
+
+# fast build rule for target.
+telegram_ros_generate_messages_cpp/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_generate_messages_cpp.dir/build.make telegram_ros/CMakeFiles/telegram_ros_generate_messages_cpp.dir/build
+.PHONY : telegram_ros_generate_messages_cpp/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_genlisp
+
+# Build rule for target.
+telegram_ros_genlisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_genlisp
+.PHONY : telegram_ros_genlisp
+
+# fast build rule for target.
+telegram_ros_genlisp/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_genlisp.dir/build.make telegram_ros/CMakeFiles/telegram_ros_genlisp.dir/build
+.PHONY : telegram_ros_genlisp/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_generate_messages_py
+
+# Build rule for target.
+telegram_ros_generate_messages_py: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_generate_messages_py
+.PHONY : telegram_ros_generate_messages_py
+
+# fast build rule for target.
+telegram_ros_generate_messages_py/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_generate_messages_py.dir/build.make telegram_ros/CMakeFiles/telegram_ros_generate_messages_py.dir/build
+.PHONY : telegram_ros_generate_messages_py/fast
+
+#=============================================================================
+# Target rules for targets named _telegram_ros_generate_messages_check_deps_LabeledImage
+
+# Build rule for target.
+_telegram_ros_generate_messages_check_deps_LabeledImage: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _telegram_ros_generate_messages_check_deps_LabeledImage
+.PHONY : _telegram_ros_generate_messages_check_deps_LabeledImage
+
+# fast build rule for target.
+_telegram_ros_generate_messages_check_deps_LabeledImage/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/_telegram_ros_generate_messages_check_deps_LabeledImage.dir/build.make telegram_ros/CMakeFiles/_telegram_ros_generate_messages_check_deps_LabeledImage.dir/build
+.PHONY : _telegram_ros_generate_messages_check_deps_LabeledImage/fast
+
+#=============================================================================
+# Target rules for targets named _telegram_ros_generate_messages_check_deps_Options
+
+# Build rule for target.
+_telegram_ros_generate_messages_check_deps_Options: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 _telegram_ros_generate_messages_check_deps_Options
+.PHONY : _telegram_ros_generate_messages_check_deps_Options
+
+# fast build rule for target.
+_telegram_ros_generate_messages_check_deps_Options/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/_telegram_ros_generate_messages_check_deps_Options.dir/build.make telegram_ros/CMakeFiles/_telegram_ros_generate_messages_check_deps_Options.dir/build
+.PHONY : _telegram_ros_generate_messages_check_deps_Options/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_geneus
+
+# Build rule for target.
+telegram_ros_geneus: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_geneus
+.PHONY : telegram_ros_geneus
+
+# fast build rule for target.
+telegram_ros_geneus/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_geneus.dir/build.make telegram_ros/CMakeFiles/telegram_ros_geneus.dir/build
+.PHONY : telegram_ros_geneus/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_generate_messages_lisp
+
+# Build rule for target.
+telegram_ros_generate_messages_lisp: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_generate_messages_lisp
+.PHONY : telegram_ros_generate_messages_lisp
+
+# fast build rule for target.
+telegram_ros_generate_messages_lisp/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_generate_messages_lisp.dir/build.make telegram_ros/CMakeFiles/telegram_ros_generate_messages_lisp.dir/build
+.PHONY : telegram_ros_generate_messages_lisp/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_generate_messages_nodejs
+
+# Build rule for target.
+telegram_ros_generate_messages_nodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_generate_messages_nodejs
+.PHONY : telegram_ros_generate_messages_nodejs
+
+# fast build rule for target.
+telegram_ros_generate_messages_nodejs/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_generate_messages_nodejs.dir/build.make telegram_ros/CMakeFiles/telegram_ros_generate_messages_nodejs.dir/build
+.PHONY : telegram_ros_generate_messages_nodejs/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_gennodejs
+
+# Build rule for target.
+telegram_ros_gennodejs: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_gennodejs
+.PHONY : telegram_ros_gennodejs
+
+# fast build rule for target.
+telegram_ros_gennodejs/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_gennodejs.dir/build.make telegram_ros/CMakeFiles/telegram_ros_gennodejs.dir/build
+.PHONY : telegram_ros_gennodejs/fast
+
+#=============================================================================
+# Target rules for targets named telegram_ros_genpy
+
+# Build rule for target.
+telegram_ros_genpy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 telegram_ros_genpy
+.PHONY : telegram_ros_genpy
+
+# fast build rule for target.
+telegram_ros_genpy/fast:
+	$(MAKE) -f telegram_ros/CMakeFiles/telegram_ros_genpy.dir/build.make telegram_ros/CMakeFiles/telegram_ros_genpy.dir/build
+.PHONY : telegram_ros_genpy/fast
+
+#=============================================================================
 # Target rules for targets named run_tests_rosserial_test_rostest
 
 # Build rule for target.
@@ -1988,6 +2157,19 @@ actionlib_msgs_generate_messages_cpp/fast:
 .PHONY : actionlib_msgs_generate_messages_cpp/fast
 
 #=============================================================================
+# Target rules for targets named trash_detection_copy
+
+# Build rule for target.
+trash_detection_copy: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 trash_detection_copy
+.PHONY : trash_detection_copy
+
+# fast build rule for target.
+trash_detection_copy/fast:
+	$(MAKE) -f vision/CMakeFiles/trash_detection_copy.dir/build.make vision/CMakeFiles/trash_detection_copy.dir/build
+.PHONY : trash_detection_copy/fast
+
+#=============================================================================
 # Target rules for targets named trash_detection
 
 # Build rule for target.
@@ -2040,19 +2222,6 @@ img_subscriber/fast:
 .PHONY : img_subscriber/fast
 
 #=============================================================================
-# Target rules for targets named stereo_publisher
-
-# Build rule for target.
-stereo_publisher: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 stereo_publisher
-.PHONY : stereo_publisher
-
-# fast build rule for target.
-stereo_publisher/fast:
-	$(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
-.PHONY : stereo_publisher/fast
-
-#=============================================================================
 # Target rules for targets named stereo_subscriber
 
 # Build rule for target.
@@ -2064,6 +2233,19 @@ stereo_subscriber: cmake_check_build_system
 stereo_subscriber/fast:
 	$(MAKE) -f vision/CMakeFiles/stereo_subscriber.dir/build.make vision/CMakeFiles/stereo_subscriber.dir/build
 .PHONY : stereo_subscriber/fast
+
+#=============================================================================
+# Target rules for targets named stereo_publisher
+
+# Build rule for target.
+stereo_publisher: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 stereo_publisher
+.PHONY : stereo_publisher
+
+# fast build rule for target.
+stereo_publisher/fast:
+	$(MAKE) -f vision/CMakeFiles/stereo_publisher.dir/build.make vision/CMakeFiles/stereo_publisher.dir/build
+.PHONY : stereo_publisher/fast
 
 # Help Target
 help:
@@ -2197,6 +2379,19 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... geometry_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_nodejs"
+	@echo "... telegram_ros_generate_messages_eus"
+	@echo "... telegram_ros_gencpp"
+	@echo "... telegram_ros_generate_messages"
+	@echo "... telegram_ros_generate_messages_cpp"
+	@echo "... telegram_ros_genlisp"
+	@echo "... telegram_ros_generate_messages_py"
+	@echo "... _telegram_ros_generate_messages_check_deps_LabeledImage"
+	@echo "... _telegram_ros_generate_messages_check_deps_Options"
+	@echo "... telegram_ros_geneus"
+	@echo "... telegram_ros_generate_messages_lisp"
+	@echo "... telegram_ros_generate_messages_nodejs"
+	@echo "... telegram_ros_gennodejs"
+	@echo "... telegram_ros_genpy"
 	@echo "... run_tests_rosserial_test_rostest"
 	@echo "... run_tests_rosserial_test"
 	@echo "... rosserial_test_rosserial_lib"
@@ -2218,12 +2413,13 @@ help:
 	@echo "... actionlib_msgs_generate_messages_py"
 	@echo "... nav_msgs_generate_messages_lisp"
 	@echo "... actionlib_msgs_generate_messages_cpp"
+	@echo "... trash_detection_copy"
 	@echo "... trash_detection"
 	@echo "... minoru_camera"
 	@echo "... target_detection"
 	@echo "... img_subscriber"
-	@echo "... stereo_publisher"
 	@echo "... stereo_subscriber"
+	@echo "... stereo_publisher"
 .PHONY : help
 
 

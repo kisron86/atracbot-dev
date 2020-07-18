@@ -165,9 +165,9 @@ void PC_Estimation(const std_msgs::Float64::ConstPtr& msg2)
   PC_Est = msg2->data;
 }
 
-void Decision(const sensor_msgs::Range::ConstPtr& msg)
+void Decision(const sensor_msgs::Range::ConstPtr& us_data)
 {
-  level = msg->range;
+  level = us_data->range;
   //printf("jarak: %f",level);
 }
 
@@ -175,7 +175,7 @@ int main(int argc, char **argv)
 {
   ros::init(argc, argv, "decision_making_system");
   ros::NodeHandle nh;
-  ros::Subscriber sub = nh.subscribe("data_jarak", 1000, Decision);
+  ros::Subscriber sub = nh.subscribe("us_topic", 1000, Decision);
   ros::Subscriber sub1 = nh.subscribe("motor_estimation", 1000, Motor_Est);
   ros::Subscriber sub2 = nh.subscribe("pc_estimation", 1000, PC_Estimation);
   ros::Rate loop_rate(10);

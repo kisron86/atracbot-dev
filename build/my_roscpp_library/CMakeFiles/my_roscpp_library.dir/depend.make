@@ -151,6 +151,16 @@ my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: 
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /home/kisron/catkin_workspace/src/my_roscpp_library/include/my_roscpp_library/my_stereofunction.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /home/kisron/catkin_workspace/src/my_roscpp_library/include/my_roscpp_library/my_stereograb.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /home/kisron/catkin_workspace/src/my_roscpp_library/src/my_stereofunction.cpp
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/cv_bridge/cv_bridge.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/camera_publisher.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/camera_subscriber.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/exception.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/image_transport.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/loader_fwds.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/publisher.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/single_subscriber_publisher.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/subscriber.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/image_transport/transport_hints.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/advertise_options.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/advertise_service_options.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/assert.h
@@ -169,6 +179,7 @@ my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: 
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/message.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/message_event.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/message_forward.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/message_operations.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/message_traits.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/names.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/node_handle.h
@@ -206,6 +217,12 @@ my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: 
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/wall_timer.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/ros/wall_timer_options.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/rosconsole/macros_generated.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/sensor_msgs/CameraInfo.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/sensor_msgs/CompressedImage.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/sensor_msgs/Image.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/sensor_msgs/RegionOfInterest.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/sensor_msgs/image_encodings.h
+my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/std_msgs/Header.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcDecl.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /opt/ros/melodic/include/xmlrpcpp/XmlRpcValue.h
 my_roscpp_library/CMakeFiles/my_roscpp_library.dir/src/my_stereofunction.cpp.o: /usr/local/include/opencv2/calib3d/calib3d.hpp
